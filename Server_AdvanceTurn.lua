@@ -9,7 +9,7 @@ function Server_AdvanceTurn_Start (game,addNewOrder)
         if war.OrderIssued == false then
 			addNewOrder(WL.GameOrderEvent.Create(war.PlayerOne, playerOne .. ' declared war on ' .. playerTwo, nil,{}));
 		
-		    war.OrderIssued == true;
+		    war.OrderIssued = true;
 		end
 	end
 end
