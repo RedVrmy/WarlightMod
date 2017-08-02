@@ -3,7 +3,7 @@ require('Utilities');
 function Server_AdvanceTurn_Start (game,addNewOrder)
 
 	--Check for declarations we haven't added to orders yet
-    for _,war in pairs(Mod.PublicGameData.Wars do
+    for _,war in pairs(Mod.PublicGameData.Wars) do
         local playerOne = game.Game.Players[war.PlayerOne].DisplayName(nil, false);
 		local playerTwo = game.Game.Players[war.PlayerTwo].DisplayName(nil, false);
         if war.OrderIssued == false then
