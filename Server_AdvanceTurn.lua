@@ -1,17 +1,15 @@
 require('Utilities');
 
-OrdersAdded = {}; --remembers what Delcaration Orders we've alerted the player about so we don't reissue the orders.
-
 function Server_AdvanceTurn_Start (game,addNewOrder)
 
 	--Check for declarations we haven't added to orders yet
-	for _,war in pairs(filter(Mod.PublicGameData.Wars or {}, function(war) return OrdersAdded[war.ID] == nil end)) do
-        	local playerOne = game.Game.Players[war.PlayerOne].DisplayName(nil, false);
+    for _,war in pairs(Mod.PublicGameData.Wars do
+        local playerOne = game.Game.Players[war.PlayerOne].DisplayName(nil, false);
 		local playerTwo = game.Game.Players[war.PlayerTwo].DisplayName(nil, false);
-        	if OrdersAdded[war.ID] == nil then
+        if war.OrderIssued == false then
 			addNewOrder(WL.GameOrderEvent.Create(war.PlayerOne, playerOne .. ' declared war on ' .. playerTwo, nil,{}));
 		
-			OrdersAdded[war.ID] = true;
+		    war.OrderIssued == true;
 		end
 	end
 end
