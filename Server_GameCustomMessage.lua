@@ -8,7 +8,7 @@ function Server_GameCustomMessage(game, playerID, payload, setReturnTable)
 		war.PlayerOne = playerID;
 		war.PlayerTwo = payload.WarTargetPlayerID;
 		war.BeginsOnTurn = game.Game.NumberOfTurns + 1
-		war.OrderIssued = false
+		war.OrderIssued = 0
 
 		--Write it into Mod.PublicGameData for all to see
 		local data = Mod.PublicGameData;
