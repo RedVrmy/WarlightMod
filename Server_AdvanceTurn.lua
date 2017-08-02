@@ -6,6 +6,7 @@ function Server_AdvanceTurn_Start (game,addNewOrder)
 
 	--Check for declarations we haven't added to orders yet
     for _,war in pairs(filter(Mod.PublicGameData.Wars or {}, function(war) return OrdersAdded[war.ID] == nil end)) do
+		print(OrdersAdded)
         local playerOne = game.Game.Players[war.PlayerOne].DisplayName(nil, false);
 		local playerTwo = game.Game.Players[war.PlayerTwo].DisplayName(nil, false);
         if OrdersAdded[war.ID] == nil then
