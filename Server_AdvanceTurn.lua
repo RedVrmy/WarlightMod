@@ -2,17 +2,15 @@ require('Utilities');
 
 function Server_AdvanceTurn_Start (game,addNewOrder)
 
-	local OrdersSeen = {}; --remembers what Delcaration Orders we've alerted the player about so we don't alert them twice.
-	
-	--Check for declarations we haven't alerted the player about yet
-    for _,war in pairs(filter(Mod.PublicGameData.Wars or {}, function(war) return OrdersSeen[war.ID] == nil end)) do
+	local OrdersAdded = {}; --remembers what Delcaration Orders we've alerted the player about so we don't reissue the orders.
+
+	--Check for declarations we haven't added to orders yet
+    for _,war in pairs(filter(Mod.PublicGameData.Wars or {}, function(war) return OrdersAdded[war.ID] == nil end)) do
         local playerOne = game.Game.Players[war.PlayerOne].DisplayName(nil, false);
 		local playerTwo = game.Game.Players[war.PlayerTwo].DisplayName(nil, false);
-        if OrdersSeen[war.ID] == nil then
-			addNewOrder(WL.GameOrderEvent.Create(war.PlayerOne, playerOne .. ' declared war on ' .. playerTwo, nil,{}));
-		end
-
-        OrdersSeen[war.ID] = true;
+        addNewOrder(WL.GameOrderEvent.Create(war.PlayerOne, playerOne .. ' declared war on ' .. playerTwo, nil,{}));
+		
+        OrdersAdded[war.ID] = true;
 	end
 end
 
