@@ -6,10 +6,10 @@ function Server_AdvanceTurn_Start (game,addNewOrder)
     for _,war in pairs(Mod.PublicGameData.Wars) do
         local playerOne = game.Game.Players[war.PlayerOne].DisplayName(nil, false);
 		local playerTwo = game.Game.Players[war.PlayerTwo].DisplayName(nil, false);
-        if war.OrderIssued == false then
+        if war.OrderIssued == 0 then
 			addNewOrder(WL.GameOrderEvent.Create(war.PlayerOne, playerOne .. ' declared war on ' .. playerTwo, nil,{}));
 		
-		    war.OrderIssued = true;
+		    war.OrderIssued = 1;
 		end
 	end
 end
