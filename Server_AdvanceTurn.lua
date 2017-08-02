@@ -1,8 +1,8 @@
 require('Utilities');
 
-function Server_AdvanceTurn_Start (game,addNewOrder)
+OrdersAdded = {}; --remembers what Delcaration Orders we've alerted the player about so we don't reissue the orders.
 
-	local OrdersAdded = {}; --remembers what Delcaration Orders we've alerted the player about so we don't reissue the orders.
+function Server_AdvanceTurn_Start (game,addNewOrder)
 
 	--Check for declarations we haven't added to orders yet
     for _,war in pairs(filter(Mod.PublicGameData.Wars or {}, function(war) return OrdersAdded[war.ID] == nil end)) do
