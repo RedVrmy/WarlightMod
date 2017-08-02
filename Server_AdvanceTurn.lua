@@ -1,6 +1,6 @@
 require('Utilities');
 
-local OrdersSeen = {}; --remembers what Delcaration Orders we've alerted the player about so we don't alert them twice.
+OrdersSeen = {}; --remembers what Delcaration Orders we've alerted the player about so we don't alert them twice.
 
 function Server_AdvanceTurn_Start (game,addNewOrder)
 	--Check for declarations we haven't alerted the player about yet
