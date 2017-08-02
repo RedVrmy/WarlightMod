@@ -1,14 +1,14 @@
 require('Utilities');
 
-IDsSeen = {}; --remembers what war IDs we've alerted the player about so we don't alert them twice.
+WarIDsSeen = {}; --remembers what war IDs we've alerted the player about so we don't alert them twice.
 
 function Client_GameRefresh(game)
 
     --Notify players of new wars via UI.Alert()
-    local unseenWars = filter(Mod.PublicGameData.Wars or {}, function(war) return IDsSeen[war.ID] == nil end);
+    local unseenWars = filter(Mod.PublicGameData.Wars or {}, function(war) return WarIDsSeen[war.ID] == nil end);
     if (#unseenWars > 0) then
         for _,war in pairs(unseenWars) do
-            IDsSeen[war.ID] = true;
+            WarIDsSeen[war.ID] = true;
         end
 
         local msgs = map(unseenWars, function(war)
