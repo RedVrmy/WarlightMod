@@ -1,7 +1,7 @@
 require('Utilities');
 
 function Client_PresentMenuUI(rootParent, setMaxSize, setScrollable, game, close)
-	setMaxSize(320,220)
+	setMaxSize(320,205)
 	Game = game; --make it globally accessible
 
 	local vert = UI.CreateVerticalLayoutGroup(rootParent);
@@ -13,14 +13,14 @@ function Client_PresentMenuUI(rootParent, setMaxSize, setScrollable, game, close
 		UI.CreateButton(vert).SetColor("#123456").SetText("Offer Peace").SetPreferredWidth(200).SetFlexibleWidth(0).SetOnClick(function()
 			game.CreateDialog(OfferPeaceDialog);
 		end);
-		UI.CreateButton(vert).SetColor("#123456").SetText("Propose Alliance").SetPreferredWidth(200).SetFlexibleWidth(0).SetOnClick(function()
+		UI.CreateButton(vert).SetColor("#123456").SetText("Propose Alliance (Coming Soon)").SetPreferredWidth(200).SetFlexibleWidth(0).SetOnClick(function()
 			game.CreateDialog(DeclareWarDialog);
 		end);
 	end
 end
 
 function DeclareWarDialog(rootParent, setMaxSize, setScrollable, game, close)
-	setMaxSize(390, 230);
+	setMaxSize(390, 217);
 	WarTargetPlayerID = nil;
 
 	local wars = Mod.PublicGameData.Wars or {};
@@ -63,7 +63,7 @@ function DeclareWarDialog(rootParent, setMaxSize, setScrollable, game, close)
 end
 
 function OfferPeaceDialog(rootParent, setMaxSize, setScrollable, game, close)
-	setMaxSize(390, 230);
+	setMaxSize(390, 217);
 	PeaceTargetPlayerID = nil;
 
 	local peaceoffers = Mod.PublicGameData.PeaceOffers or {};
