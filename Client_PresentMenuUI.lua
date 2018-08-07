@@ -14,7 +14,6 @@ function Client_PresentMenuUI(rootParent, setMaxSize, setScrollable, game, close
 			game.CreateDialog(OfferPeaceDialog);
 		end);
 		UI.CreateButton(vert).SetColor("#cccccc").SetText("Propose Alliance (Coming Soon)").SetPreferredWidth(200).SetFlexibleWidth(0);
-		end);
 	end
 end
 
