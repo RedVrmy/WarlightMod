@@ -20,7 +20,7 @@ function Client_PresentMenuUI(rootParent, setMaxSize, setScrollable, game, close
 end
 
 function DeclareWarDialog(rootParent, setMaxSize, setScrollable, game, close)
-	setMaxSize(390, 217);
+	setMaxSize(390, 220);
 	WarTargetPlayerID = nil;
 
 	local wars = Mod.PublicGameData.Wars or {};
