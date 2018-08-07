@@ -7,7 +7,7 @@ function Server_GameCustomMessage(game, playerID, payload, setReturnTable)
 		war.ID = math.random(2000000000);
 		war.PlayerOne = playerID;
 		war.PlayerTwo = payload.WarTargetPlayerID;
-		war.BeginsOnTurn = game.Game.NumberOfTurns + 1
+		war.BeginsOnTurn = game.Game.TurnNumber + 1
 
 		--Write it into Mod.PublicGameData for all to see
 		local data = Mod.PublicGameData;

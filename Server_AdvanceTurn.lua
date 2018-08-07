@@ -32,8 +32,8 @@ function PlayersAreAtWar(game, playerOne, playerTwo)
 	if (playerOne == playerTwo) then return false end; --never at war with yourself.
 
 	return first(Mod.PublicGameData.Wars or {}, function(war) 
-		return (war.PlayerOne == playerOne and war.PlayerTwo == playerTwo and war.BeginsOnTurn < game.Game.NumberOfTurns)
-			or (war.PlayerOne == playerTwo and war.PlayerTwo == playerOne and war.BeginsOnTurn < game.Game.NumberOfTurns);
+		return (war.PlayerOne == playerOne and war.PlayerTwo == playerTwo and war.BeginsOnTurn < game.Game.TurnNumber)
+			or (war.PlayerOne == playerTwo and war.PlayerTwo == playerOne and war.BeginsOnTurn < game.Game.TurnNumber);
 		end
 	) ~= nil;
 end
