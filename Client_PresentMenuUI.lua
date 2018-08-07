@@ -1,7 +1,7 @@
 require('Utilities');
 
 function Client_PresentMenuUI(rootParent, setMaxSize, setScrollable, game, close)
-	setMaxSize(320,235)
+	setMaxSize(320,205)
 	Game = game; --make it globally accessible
 
 	local vert = UI.CreateVerticalLayoutGroup(rootParent);
@@ -13,12 +13,14 @@ function Client_PresentMenuUI(rootParent, setMaxSize, setScrollable, game, close
 		UI.CreateButton(vert).SetColor("#123456").SetText("Offer Peace").SetPreferredWidth(200).SetFlexibleWidth(0).SetOnClick(function()
 			game.CreateDialog(OfferPeaceDialog);
 		end);
-		UI.CreateButton(vert).SetColor("#cccccc").SetText("Propose Alliance (unavailable)").SetPreferredWidth(200).SetFlexibleWidth(0);
+		UI.CreateButton(vert).SetColor("#123456").SetText("Propose Alliance (Coming Soon)").SetPreferredWidth(200).SetFlexibleWidth(0).SetOnClick(function()
+			game.CreateDialog(DeclareWarDialog);
+		end);
 	end
 end
 
 function DeclareWarDialog(rootParent, setMaxSize, setScrollable, game, close)
-	setMaxSize(390, 230);
+	setMaxSize(390, 217);
 	WarTargetPlayerID = nil;
 
 	local wars = Mod.PublicGameData.Wars or {};
@@ -61,7 +63,7 @@ function DeclareWarDialog(rootParent, setMaxSize, setScrollable, game, close)
 end
 
 function OfferPeaceDialog(rootParent, setMaxSize, setScrollable, game, close)
-	setMaxSize(390, 230);
+	setMaxSize(390, 217);
 	PeaceTargetPlayerID = nil;
 
 	local peaceoffers = Mod.PublicGameData.PeaceOffers or {};
@@ -89,7 +91,7 @@ function OfferPeaceDialog(rootParent, setMaxSize, setScrollable, game, close)
 			close(); --Close the propose dialog since we're done with it
 		end);
 	end);
---BELOW IS TEMPORARY-- checking peace offers are INDEED being written to publicgamedata in server_customgamemessage
+-- TEMPORARY: checking peace offers are being written to publicgamedata in server_customgamemessage --------------------------
 	if (#peaceoffers > 0) then
 		UI.CreateLabel(vert).SetText(' ');
 		for _,peaceoffer in pairs(peaceoffers) do
@@ -98,7 +100,7 @@ function OfferPeaceDialog(rootParent, setMaxSize, setScrollable, game, close)
 			UI.CreateLabel(vert).SetText(playerOne .. ' offered peace to ' .. playerTwo .. '.');
 		end
 	end
-
+------------------------------------------------------------------------------------------------------------------------------
 end
 
 function WarTargetPlayerClicked()
