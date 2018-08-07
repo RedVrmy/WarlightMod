@@ -20,7 +20,7 @@ function Client_PresentMenuUI(rootParent, setMaxSize, setScrollable, game, close
 end
 
 function DeclareWarDialog(rootParent, setMaxSize, setScrollable, game, close)
-	setMaxSize(390, 225);
+	setMaxSize(390, 230);
 	WarTargetPlayerID = nil;
 
 	local wars = Mod.PublicGameData.Wars or {};
@@ -63,7 +63,7 @@ function DeclareWarDialog(rootParent, setMaxSize, setScrollable, game, close)
 end
 
 function OfferPeaceDialog(rootParent, setMaxSize, setScrollable, game, close)
-	setMaxSize(390, 217);
+	setMaxSize(390, 230);
 	PeaceTargetPlayerID = nil;
 
 	local peaceoffers = Mod.PublicGameData.PeaceOffers or {};
