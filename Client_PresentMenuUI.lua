@@ -1,7 +1,7 @@
 require('Utilities');
 
 function Client_PresentMenuUI(rootParent, setMaxSize, setScrollable, game, close)
-	setMaxSize(320,225)
+	setMaxSize(320,230)
 	Game = game; --make it globally accessible
 
 	local vert = UI.CreateVerticalLayoutGroup(rootParent);
@@ -19,7 +19,7 @@ function Client_PresentMenuUI(rootParent, setMaxSize, setScrollable, game, close
 end
 
 function DeclareWarDialog(rootParent, setMaxSize, setScrollable, game, close)
-	setMaxSize(390, 217);
+	setMaxSize(390, 230);
 	WarTargetPlayerID = nil;
 
 	local wars = Mod.PublicGameData.Wars or {};
@@ -62,7 +62,7 @@ function DeclareWarDialog(rootParent, setMaxSize, setScrollable, game, close)
 end
 
 function OfferPeaceDialog(rootParent, setMaxSize, setScrollable, game, close)
-	setMaxSize(390, 217);
+	setMaxSize(390, 230);
 	PeaceTargetPlayerID = nil;
 
 	local peaceoffers = Mod.PublicGameData.PeaceOffers or {};
