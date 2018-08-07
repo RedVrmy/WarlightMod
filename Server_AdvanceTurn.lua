@@ -7,11 +7,12 @@ function Server_AdvanceTurn_Start (game,addNewOrder)
     for _,war in pairs(filter(Mod.PublicGameData.Wars or {}, function(war) return OrdersSeen[war.ID] == nil end)) do
         local playerOne = game.Game.Players[war.PlayerOne].DisplayName(nil, false);
 		local playerTwo = game.Game.Players[war.PlayerTwo].DisplayName(nil, false);
-        local WarStartTurn = [war.BeginsOnTurn];
+        local WarStartTurn = war.BeginsOnTurn;
         
 		if (WarStartTurn == game.Game.TurnNumber) then
-        addNewOrder(WL.GameOrderEvent.Create(war.PlayerOne, playerOne .. ' declared war on ' .. playerTwo, nil,{}));
-
+            addNewOrder(WL.GameOrderEvent.Create(war.PlayerOne, playerOne .. ' declared war on ' .. playerTwo, nil,{}));
+        end
+        
         OrdersSeen[war.ID] = true;
 	end
 end
