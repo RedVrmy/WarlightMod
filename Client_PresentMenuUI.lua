@@ -1,7 +1,7 @@
 require('Utilities');
 
 function Client_PresentMenuUI(rootParent, setMaxSize, setScrollable, game, close)
-	setMaxSize(320,250)
+	setMaxSize(350,250)
 	Game = game; --make it globally accessible
 
 	local vert = UI.CreateVerticalLayoutGroup(rootParent);
