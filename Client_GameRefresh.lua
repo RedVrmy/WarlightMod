@@ -27,5 +27,6 @@ function Client_GameRefresh(game)
         UI.PromptFromList(otherPlayer .. ' has offered peace. Do you accept?', { AcceptProposalBtn(game, proposal), DeclineProposalBtn(game, proposal) });
 
         IDsSeen[proposal.ID] = true;
-
+    end
+    
 end
