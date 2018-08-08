@@ -11,9 +11,9 @@ function Server_AdvanceTurn_Start (game,addNewOrder)
         
 		if (WarStartTurn == game.Game.TurnNumber) then
             addNewOrder(WL.GameOrderEvent.Create(war.PlayerOne, playerOne .. ' declared war on ' .. playerTwo, nil,{}));
+                
+            OrdersSeen[war.ID] = true;
         end
-        
-        OrdersSeen[war.ID] = true;
 	end
 end
 
