@@ -5,28 +5,37 @@ PeaceOfferIDsSeen = {}; --remembers what proposal IDs and alliance IDs we've ale
 
 function Client_GameRefresh(game)
 
-    --Notify players of new wars via UI.Alert()
-    local unseenWars = filter(Mod.PublicGameData.Wars or {}, function(war) return WarIDsSeen[war.ID] == nil end);
-    if (#unseenWars > 0) then
-        for _,war in pairs(unseenWars) do
-            WarIDsSeen[war.ID] = true;
-        end
-
-        local msgs = map(unseenWars, function(war)
-            local playerOne = game.Game.Players[war.PlayerOne].DisplayName(nil, false);
-			local playerTwo = game.Game.Players[war.PlayerTwo].DisplayName(nil, false);
-			return playerOne .. ' has declared war on ' .. playerTwo .. '!';
-        end);
-        local finalMsg = table.concat(msgs, '\n');
-        UI.Alert(finalMsg);
-    end
-
     --Check for proposals we haven't alerted the player about yet
     for _,peaceoffer in pairs(filter(Mod.PlayerGameData.PendingPeaceOffers or {}, function(peaceoffer) return PeaceOfferIDsSeen[peaceoffer.ID] == nil end)) do
         local otherPlayer = game.Game.Players[peaceoffer.PlayerOne].DisplayName(nil, false);
-        UI.PromptFromList(otherPlayer .. ' has offered peace. Do you accept?', { AcceptProposalBtn(game, proposal), DeclineProposalBtn(game, proposal) });
+        UI.PromptFromList(otherPlayer .. ' has offered peace. Do you accept?', { AcceptPeaceOfferBtn(game, peaceoffer), DeclinePeaceOfferBtn(game, peaceoffer) });
 
-        IDsSeen[proposal.ID] = true;
+        PeaceOfferIDsSeen[peaceoffer.ID] = true;
     end
-    
+end
+
+
+function AcceptPeaceOfferBtn(game, peaceoffer)
+	local ret = {};
+	ret["text"] = 'Accept';
+	ret["selected"] = function() 
+        local payload = {};
+        payload.Message = "AcceptProposal";
+        payload.PeaceOfferID = peaceoffer.ID;
+		game.SendGameCustomMessage('Accepting proposal...', payload, function(returnValue) end);
+	end
+	return ret;
+end
+
+
+function DeclinePeaceOfferBtn(game, proposal)
+	local ret = {};
+	ret["text"] = 'Decline';
+	ret["selected"] = function() 
+        local payload = {};
+        payload.Message = "DeclineProposal";
+        payload.PeaceOfferID = peaceoffer.ID;
+		game.SendGameCustomMessage('Declining proposal...', payload, function(returnValue) end);
+	end
+	return ret;
 end
