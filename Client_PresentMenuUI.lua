@@ -64,7 +64,8 @@ function DeclareWarDialog(rootParent, setMaxSize, setScrollable, game, close)
 end
 
 function OfferPeaceDialog(rootParent, setMaxSize, setScrollable, game, close)
-	setMaxSize(390, 235);
+	setMaxSize(390, 235)
+    Game = game;
 	PeaceTargetPlayerID = nil;
 
 	local peaceoffers = Mod.PublicGameData.PeaceOffers or {};
