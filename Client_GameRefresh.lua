@@ -20,9 +20,9 @@ function AcceptPeaceOfferBtn(game, peaceoffer)
 	ret["text"] = 'Accept';
 	ret["selected"] = function() 
         local payload = {};
-        payload.Message = "AcceptProposal";
+        payload.Message = "AcceptPeaceOffer";
         payload.PeaceOfferID = peaceoffer.ID;
-		game.SendGameCustomMessage('Accepting proposal...', payload, function(returnValue) end);
+		game.SendGameCustomMessage('Accepting peace offer...', payload, function(returnValue) end);
 	end
 	return ret;
 end
@@ -33,9 +33,9 @@ function DeclinePeaceOfferBtn(game, proposal)
 	ret["text"] = 'Decline';
 	ret["selected"] = function() 
         local payload = {};
-        payload.Message = "DeclineProposal";
+        payload.Message = "DeclinePeaceOffer";
         payload.PeaceOfferID = peaceoffer.ID;
-		game.SendGameCustomMessage('Declining proposal...', payload, function(returnValue) end);
+		game.SendGameCustomMessage('Declining peace offer...', payload, function(returnValue) end);
 	end
 	return ret;
 end
